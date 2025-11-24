@@ -41,7 +41,7 @@ const FloatingContact = () => {
           size="icon"
           className="w-14 h-14 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 bg-green-600 hover:bg-green-700 text-white border-2 border-white"
           onClick={() => {
-            window.open("https://wa.me/254700000000", "_blank");
+            window.open("https://wa.me/254758827745", "_blank");
             closeMenu();
           }}
           title="WhatsApp"
