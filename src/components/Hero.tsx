@@ -1,259 +1,241 @@
-import { ArrowRight, Heart, BookOpen, Users, Star, Award, GraduationCap, ChevronUp, ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-school.jpg";
-import { useEffect, useRef } from "react";
+'use client';
 
-const Hero = () => {
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+import { BookOpen, Star, Award, GraduationCap, Heart, MessageCircle, Phone, Mail, X, ArrowUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+import { useLocation, useNavigate } from "react-router-dom";
+
+import HeroSchool from "../assets/WhatsApp Image 2023-04-01 at 00.47.41.jpeg";
+import CBCLearning from "../assets/WhatsApp Image 2023-04-01 at 00.47.45.jpeg";
+
+const carouselImages = [HeroSchool, CBCLearning, HeroSchool];
+
+// Floating Contact Button
+export const FloatingContact = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+      <div className={`flex flex-col gap-4 mb-4 transition-all duration-500 ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
+        <Button
+          size="icon"
+          className="w-14 h-14 rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-2xl hover:scale-110 border-4 border-white/30 animate-bounce"
+          onClick={() => window.open("https://wa.me/254758827745", "_blank")}
+        >
+          <MessageCircle className="w-7 h-7" />
+        </Button>
+        <Button
+          size="icon"
+          className="w-14 h-14 rounded-full bg-blue-700 hover:bg-blue-800 text-white shadow-2xl hover:scale-110 border-4 border-white/30"
+          onClick={() => window.location.href = "tel:+254758827745"}
+        >
+          <Phone className="w-7 h-7" />
+        </Button>
+        <Button
+          size="icon"
+          className="w-14 h-14 rounded-full bg-blue-800 hover:bg-blue-900 text-white shadow-2xl hover:scale-110 border-4 border-white/30"
+          onClick={() => window.location.href = "mailto:info@questforhappiness.org"}
+        >
+          <Mail className="w-7 h-7" />
+        </Button>
+      </div>
+
+      <Button
+        size="icon"
+        onClick={() => setIsOpen(!isOpen)}
+        className={`w-16 h-16 rounded-full shadow-2xl transition-all duration-500 border-4 border-white/30 ${
+          isOpen 
+            ? 'bg-black hover:bg-gray-900 rotate-45' 
+            : 'bg-blue-600 hover:bg-blue-700'
+        }`}
+      >
+        {isOpen ? <X className="w-8 h-8" /> : <MessageCircle className="w-8 h-8" />}
+      </Button>
+
+      {!isOpen && (
+        <div className="absolute inset-0 -z-10 animate-ping">
+          <div className="w-16 h-16 bg-blue-500/40 rounded-full" />
+        </div>
+      )}
+    </div>
+  );
+};
+
+// Scroll to Top Button
+export const ScrollToTop = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      setIsVisible(window.scrollY > 500);
+    };
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const scrollToBottom = () => {
-    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-  };
+  return (
+    <Button
+      size="icon"
+      onClick={scrollToTop}
+      className={`fixed bottom-28 right-6 z-40 w-14 h-14 rounded-full bg-blue-600 text-white shadow-2xl hover:scale-110 transition-all duration-300 border-4 border-white/30 ${
+        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'
+      }`}
+    >
+      <ArrowUp className="w-7 h-7" />
+    </Button>
+  );
+};
 
-  const statsRef = useRef<HTMLDivElement>(null);
+// Updates Ticker
+const UpdatesTicker = () => {
+  const updates = [
+    "Grade 8 KCPE 2024 Average Score: 378 Marks!",
+    "Admissions Open for 2025 – Limited Seats Remaining!",
+    "New Ultra-Modern STEM Lab Officially Launched",
+    "County Champions 2024 – Drama, Music & Science",
+    "Holiday Tuition Starts December 2nd – Register Now",
+    "Parent-Teacher Meeting: Saturday, Nov 30th @ 9 AM",
+    "Congratulations to Our 2024 Top Performers!",
+    "Tree Planting Day – Every Child Plants a Future"
+  ];
+
+  return (
+    <div className="relative overflow-hidden bg-black/70 backdrop-blur-md py-5 mt-10 border-t border-b border-blue-500/50">
+      <div className="animate-marquee whitespace-nowrap">
+        <div className="inline-flex items-center gap-20">
+          {updates.concat(updates).map((update, index) => (
+            <span key={index} className="text-lg md:text-2xl font-semibold text-white tracking-wider drop-shadow-lg">
+              {update}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-black/90 to-transparent pointer-events-none z-10" />
+      <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-black/90 to-transparent pointer-events-none z-10" />
+    </div>
+  );
+};
+
+// Main Hero Component
+const Hero = () => {
+  const [emblaRef] = useEmblaCarousel(
+    { loop: true, align: "center", containScroll: "trimSnaps", dragFree: false },
+    [Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true })]
+  );
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animate-float");
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (statsRef.current) {
-      const statBoxes = statsRef.current.querySelectorAll(".stat-box");
-      statBoxes.forEach((box, index) => {
-        (box as HTMLElement).style.animationDelay = `${index * 0.2}s`;
-        observer.observe(box);
-      });
-    }
-
-    return () => observer.disconnect();
+    const stars = document.querySelectorAll('.animated-star');
+    stars.forEach((star) => {
+      const el = star as HTMLElement;
+      const top = Math.random() * 100;
+      const left = Math.random() * 100;
+      const delay = Math.random() * 5;
+      el.style.top = `${top}%`;
+      el.style.left = `${left}%`;
+      el.style.animationDelay = `${delay}s`;
+    });
   }, []);
+
+  const handleApplyNow = () => {
+    if (location.pathname === "/") {
+      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/#contact");
+    }
+  };
 
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-      {/* Background Image with Blue/Black Overlay */}
+      {/* Background Carousel */}
       <div className="absolute inset-0 z-0">
-        <img
-          src={heroImage}
-          alt="Quest for Happiness Ministry School"
-          className="w-full h-full object-cover scale-110 animate-zoom"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 via-black/70 to-blue-800/60" />
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          {Array.from({ length: 20 }, (_, i) => (
+        <div className="embla h-screen w-full" ref={emblaRef}>
+          <div className="embla__container flex h-full">
+            {carouselImages.map((src, i) => (
+              <div key={i} className="embla__slide relative flex-[0_0_100%] min-w-0 overflow-hidden">
+                <img
+                  src={src}
+                  alt={`Quest for Happiness Academy - ${i + 1}`}
+                  className="absolute inset-0 w-full h-full object-cover object-center brightness-75"
+                  loading={i === 0 ? "eager" : "lazy"}
+                />
+                <div className="absolute inset-0 pointer-events-none animate-zoom-slow" />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80" />
+
+        {/* Twinkling Stars - now white/blue */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          {Array.from({ length: 40 }, (_, i) => (
             <div
               key={i}
-              className="animated-star"
+              className="animated-star absolute w-1.5 h-1.5 bg-white rounded-full opacity-80 animate-twinkle"
             />
           ))}
         </div>
       </div>
 
-      {/* Floating Icons */}
-      <div className="absolute inset-0 z-5">
-        <Star className="absolute top-1/4 left-10 w-6 h-6 text-blue-300 animate-bounce" />
-        <Award className="absolute top-1/3 right-20 w-5 h-5 text-white animate-pulse" />
-        <GraduationCap className="absolute bottom-1/4 left-20 w-7 h-7 text-blue-200 animate-bounce" />
-        <Star className="absolute bottom-1/3 right-10 w-4 h-4 text-white animate-pulse" />
-        {/* Additional Floating Elements */}
-        <BookOpen className="absolute top-1/2 left-1/4 w-5 h-5 text-blue-200 animate-float" />
-        <Heart className="absolute top-3/4 right-1/3 w-6 h-6 text-white animate-pulse" />
+      {/* Floating Icons - only blue & white */}
+      <div className="absolute inset-0 z-10 pointer-events-none">
+        <Star className="absolute top-20 left-10 w-10 h-10 text-blue-300 animate-pulse" />
+        <Star className="absolute top-32 right-20 w-8 h-8 text-blue-200 animate-pulse delay-700" />
+        <Award className="absolute top-48 left-20 w-12 h-12 text-blue-400 animate-bounce" />
+        <GraduationCap className="absolute bottom-32 left-16 w-14 h-14 text-blue-300 animate-float" />
+        <BookOpen className="absolute top-1/3 right-1/4 w-10 h-10 text-blue-200 animate-pulse" />
+        <Heart className="absolute bottom-24 right-32 w-12 h-12 text-blue-400 animate-pulse" />
       </div>
 
-      {/* Content */}
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto">
-          <div className="animate-fade-in-up">
-            <div className="flex items-center mb-4 animate-slide-in-right">
-              <div className="w-3 h-12 bg-blue-500 mr-4 rounded-full"></div>
-              <h2 className="text-blue-300 font-semibold text-lg tracking-wider">
-                EXCELLENCE IN EDUCATION
-              </h2>
-            </div>
-            
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight animate-text-focus">
-              Learning Experience,
-              <br />
-              <span className="text-blue-400 relative inline-block">
-                With a Difference
-                <div className="absolute bottom-2 left-0 w-full h-1 bg-blue-500 transform scale-x-0 animate-underline-expand"></div>
-              </span>
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed animate-fade-in-delay">
-              A CBE Primary and Junior School integrated with a Children's Home,
-              spreading <span className="text-blue-300 font-semibold">love</span> and{" "}
-              <span className="text-blue-300 font-semibold">education</span> to every child.
-            </p>
-          </div>
+      {/* Hero Content */}
+      <div className="container mx-auto px-6 relative z-20 text-center">
+        <div className="max-w-5xl mx-auto">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white leading-tight">
+            Welcome to <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 drop-shadow-2xl">
+              Quest for Happiness
+            </span>{" "}
+            Academy
+          </h1>
+          
+          <p className="mt-8 text-xl md:text-3xl text-gray-200 font-light tracking-wide">
+            Nurturing Minds • Building Character • Shaping Tomorrow
+          </p>
 
-          {/* 🎓 School Motto */}
-          <div className="mt-10 text-center text-white/90 italic text-lg tracking-wide animate-fade-in">
-            "Empowering young minds to grow with wisdom, kindness, and purpose."
-          </div>
+          <UpdatesTicker />
 
-          {/* Enhanced CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-8 mt-8 animate-slide-up-delay">
+          <div className="mt-12 flex flex-col sm:flex-row gap-6 justify-center">
             <Button
+              onClick={handleApplyNow}
               size="lg"
-              onClick={() => scrollToSection("#contact")}
-              className="text-lg group bg-blue-600 hover:bg-blue-700 text-white border-2 border-blue-500 hover:border-blue-300 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
+              className="px-12 py-7 text-xl font-bold bg-blue-600 hover:bg-blue-700 rounded-full shadow-2xl hover:shadow-blue-500/60 transform hover:scale-105 transition-all duration-300"
             >
-              Enroll Now
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
+              Apply Now
             </Button>
             <Button
-              size="lg"
               variant="outline"
-              onClick={() => scrollToSection("#childrens-home")}
-              className="text-lg bg-black/40 backdrop-blur-sm border-white/30 text-white hover:bg-white hover:text-blue-900 hover:border-white transform hover:scale-105 transition-all duration-300"
-            >
-              <Heart className="mr-2 w-5 h-5 animate-heartbeat" />
-              Support a Child
-            </Button>
-            {/* 🏫 Virtual Tour Button */}
-            <Button
               size="lg"
-              variant="secondary"
-              onClick={() => scrollToSection("#video-tour")}
-              className="text-lg bg-white text-blue-900 hover:bg-blue-100 border-blue-400 border-2 font-semibold transform hover:scale-105 transition-all duration-300"
+              className="px-12 py-7 text-xl font-bold bg-white/20 backdrop-blur-lg border-2 border-white/50 text-white hover:bg-white/30 rounded-full transition-all"
             >
-              🎥 Virtual Tour
+              Virtual Tour
             </Button>
-          </div>
-
-          {/* 🎯 Quick Links */}
-          <div className="mt-8 flex flex-wrap gap-4 justify-center animate-fade-in">
-            <Button 
-              onClick={() => scrollToSection("#admissions")} 
-              className="bg-blue-500 hover:bg-blue-600 text-white border-2 border-blue-400 transition-all duration-300"
-            >
-              Admissions
-            </Button>
-            <Button 
-              onClick={() => scrollToSection("#academics")} 
-              className="bg-blue-700 hover:bg-blue-800 text-white border-2 border-blue-600 transition-all duration-300"
-            >
-              Academics
-            </Button>
-            <Button 
-              onClick={() => scrollToSection("#childrens-home")} 
-              className="bg-blue-900 hover:bg-blue-950 text-white border-2 border-blue-700 transition-all duration-300"
-            >
-              Children's Home
-            </Button>
-          </div>
-
-          {/* Quick Stats */}
-          <div ref={statsRef} className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto mt-12">
-            <div className="stat-box bg-black/40 backdrop-blur-md rounded-xl p-6 text-center border-2 border-blue-500/30 transform transition-all duration-500 hover:border-blue-400 hover:bg-blue-900/20 hover:scale-105">
-              <div className="relative inline-block">
-                <BookOpen className="w-10 h-10 text-blue-400 mx-auto mb-3" />
-                <div className="absolute -top-1 -right-1 w-4 h-4 bg-blue-500 rounded-full animate-ping"></div>
-              </div>
-              <p className="text-3xl font-bold text-white mb-1">450+</p>
-              <p className="text-blue-200 font-medium">Students</p>
-            </div>
-            <div className="stat-box bg-black/40 backdrop-blur-md rounded-xl p-6 text-center border-2 border-blue-500/30 transform transition-all duration-500 hover:border-blue-400 hover:bg-blue-900/20 hover:scale-105">
-              <Heart className="w-10 h-10 text-blue-400 mx-auto mb-3 animate-pulse" />
-              <p className="text-3xl font-bold text-white mb-1">120+</p>
-              <p className="text-blue-200 font-medium">Children Cared</p>
-            </div>
-            <div className="stat-box bg-black/40 backdrop-blur-md rounded-xl p-6 text-center border-2 border-blue-500/30 transform transition-all duration-500 hover:border-blue-400 hover:bg-blue-900/20 hover:scale-105">
-              <Users className="w-10 h-10 text-blue-400 mx-auto mb-3" />
-              <p className="text-3xl font-bold text-white mb-1">25+</p>
-              <p className="text-blue-200 font-medium">Teachers</p>
-            </div>
-          </div>
-
-          {/* 🌟 Core Values */}
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center animate-fade-in">
-            <div className="p-6 bg-black/30 rounded-xl hover:bg-blue-900/30 transition-all duration-300 transform hover:scale-105 border border-blue-500/20">
-              <Star className="w-10 h-10 text-blue-400 mx-auto mb-3 animate-pulse" />
-              <h4 className="text-white font-bold text-lg mb-2">Excellence</h4>
-              <p className="text-blue-200 text-sm">Committed to quality learning and academic achievement.</p>
-            </div>
-            <div className="p-6 bg-black/30 rounded-xl hover:bg-blue-900/30 transition-all duration-300 transform hover:scale-105 border border-blue-500/20">
-              <Heart className="w-10 h-10 text-blue-400 mx-auto mb-3 animate-heartbeat" />
-              <h4 className="text-white font-bold text-lg mb-2">Compassion</h4>
-              <p className="text-blue-200 text-sm">Caring for every child's wellbeing and personal growth.</p>
-            </div>
-            <div className="p-6 bg-black/30 rounded-xl hover:bg-blue-900/30 transition-all duration-300 transform hover:scale-105 border border-blue-500/20">
-              <Users className="w-10 h-10 text-blue-400 mx-auto mb-3" />
-              <h4 className="text-white font-bold text-lg mb-2">Community</h4>
-              <p className="text-blue-200 text-sm">Growing together as one supportive family.</p>
-            </div>
-          </div>
-
-          {/* 💬 Welcome Message */}
-          <div className="mt-12 max-w-2xl mx-auto text-center bg-black/40 backdrop-blur-sm p-8 rounded-2xl border-2 border-blue-500/30 animate-fade-in">
-            <p className="text-white text-lg leading-relaxed italic mb-4">
-              "At Quest for Happiness Ministry, we believe every child deserves quality education and love.
-              We are more than a school — we're a home of hope and a family that nurtures dreams."
-            </p>
-            <p className="text-blue-300 font-semibold text-md">
-              — Headteacher, Quest for Happiness Ministry
-            </p>
-          </div>
-
-          {/* 🎉 Event Ticker */}
-          <div className="mt-8 bg-blue-600/80 backdrop-blur-sm rounded-full py-3 px-6 max-w-md mx-auto animate-pulse">
-            <div className="flex items-center justify-center text-white text-sm font-medium">
-              <span className="mr-2">🎉</span>
-              Upcoming: Christmass Party & Graduation Day - Dec 13th
-              <span className="ml-2">🎉</span>
-            </div>
           </div>
         </div>
       </div>
 
-      {/* 💚 Floating Donate Button */}
-      <Button
-        onClick={() => scrollToSection("#donate")}
-        className="fixed bottom-8 right-8 z-50 bg-green-600 hover:bg-green-700 text-white shadow-lg hover:shadow-green-500/25 rounded-full w-14 h-14 animate-bounce"
-        size="icon"
-      >
-        <Heart className="w-6 h-6" />
-      </Button>
-
-      {/* 🔼 Scroll Up Button */}
-      <Button
-        onClick={scrollToTop}
-        className="fixed top-8 right-8 z-50 bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-blue-500/25 rounded-full w-12 h-12 transition-all duration-300"
-        size="icon"
-      >
-        <ChevronUp className="w-5 h-5" />
-      </Button>
-
-      {/* 🔽 Scroll Down Button */}
-      <Button
-        onClick={scrollToBottom}
-        className="fixed top-20 right-8 z-50 bg-blue-500/80 hover:bg-blue-600 text-white shadow-lg hover:shadow-blue-500/25 rounded-full w-12 h-12 transition-all duration-300 backdrop-blur-sm"
-        size="icon"
-      >
-        <ChevronDown className="w-5 h-5" />
-      </Button>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
-        <div className="w-8 h-14 rounded-full border-2 border-blue-400 flex items-start justify-center p-2 bg-black/20 backdrop-blur-sm">
-          <div className="w-1 h-4 bg-blue-400 rounded-full animate-pulse" />
+      {/* Scroll Down Indicator */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="w-10 h-16 rounded-full border-4 border-white/80 flex items-start justify-center p-2 bg-white/10 backdrop-blur">
+          <div className="w-1.5 h-8 bg-white rounded-full animate-pulse" />
         </div>
       </div>
     </section>
