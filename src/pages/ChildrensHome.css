@@ -1,0 +1,52 @@
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(255,255,255,0.5); }
+  50% { box-shadow: 0 0 40px rgba(255,255,255,0.8), 0 0 60px rgba(251,191,36,0.4); }
+}
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(180deg); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+.sparkle { position: relative; }
+.sparkle::before, .sparkle::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #fbbf24;
+  border-radius: 50%;
+  animation: sparkle 2s infinite;
+}
+.sparkle::before { top: -10px; left: 50%; animation-delay: 0.5s; }
+.sparkle::after { bottom: -10px; right: 50%; animation-delay: 1s; }
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+.animation-delay-0s { animation-delay: 0s; }
+.animation-delay-1s { animation-delay: 1s; }
+.animation-delay-2s { animation-delay: 2s; }
+.animation-delay-0ms { animation-delay: 0ms; }
+.animation-delay-100ms { animation-delay: 100ms; }
+.animation-delay-200ms { animation-delay: 200ms; }
+.animation-delay-300ms { animation-delay: 300ms; }
+.animation-delay-400ms { animation-delay: 400ms; }
+.animation-delay-500ms { animation-delay: 500ms; }
+.animation-delay-600ms { animation-delay: 600ms; }
+.animation-delay-700ms { animation-delay: 700ms; }
+.shadow-glow-emerald { box-shadow: 0 0 60px rgba(16, 185, 129, 0.3); }
+.shadow-glow-orange { box-shadow: 0 0 60px rgba(251, 146, 60, 0.3); }
+.shadow-glow-purple { box-shadow: 0 0 60px rgba(147, 51, 234, 0.3); }
+.shadow-glow-blue { box-shadow: 0 0 60px rgba(59, 130, 246, 0.3); }
+.shadow-glow-pink { box-shadow: 0 0 60px rgba(236, 72, 153, 0.3); }
+.shadow-glow-amber { box-shadow: 0 0 60px rgba(245, 158, 11, 0.3); }

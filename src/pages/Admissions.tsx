@@ -102,7 +102,6 @@ const Admissions = () => {
       events: ["Opening Day", "Academic Day", "Prize Giving", "Closing Day"]
     }
   ];
-
   return (
     <div className="min-h-screen bg-white overflow-hidden">
       <Navigation />
@@ -285,16 +284,19 @@ const Admissions = () => {
 
                     <ul className="space-y-3 text-left">
                       {level.features.map((feature, i) => (
-                        <li key={i} className="flex items-center gap-3 text-gray-700">
-                          <motion.div
+                        <li
+                          key={i}
+                          className="flex items-center gap-3 text-gray-700"
+                        >
+                          <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                          <motion.span
                             initial={{ x: -30, opacity: 0 }}
                             whileInView={{ x: 0, opacity: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.3 + i * 0.1 }}
                           >
-                            <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
                             {feature}
-                          </motion.div>
+                          </motion.span>
                         </li>
                       ))}
                     </ul>
@@ -439,15 +441,15 @@ const Admissions = () => {
                     <ul className="space-y-3">
                       {term.events.map((event, idx) => (
                         <li key={idx} className="flex items-center gap-3 text-gray-700">
-                          <motion.div
+                          <motion.div animate={{ scale: [1, 1.3, 1] }} transition={{ duration: 1.5, repeat: Infinity, delay: idx * 0.3 }} className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0" />
+                          <motion.span
                             initial={{ x: -30, opacity: 0 }}
                             whileInView={{ x: 0, opacity: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: idx * 0.1 }}
                           >
-                            <motion.div animate={{ scale: [1, 1.3, 1] }} transition={{ duration: 1.5, repeat: Infinity, delay: idx * 0.3 }} className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0" />
                             {event}
-                          </motion.div>
+                          </motion.span>
                         </li>
                       ))}
                     </ul>
@@ -478,15 +480,15 @@ const Admissions = () => {
                     <ul className="grid md:grid-cols-2 gap-3 text-gray-700">
                       {["Tuition Fees", "Learning Materials", "Activity Fees", "Medical Care"].map((item, idx) => (
                         <li key={idx} className="flex items-center gap-2">
-                          <motion.div
+                          <CheckCircle className="w-4 h-4 text-green-500" />
+                          <motion.span
                             initial={{ x: -20, opacity: 0 }}
                             whileInView={{ x: 0, opacity: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: idx * 0.1 }}
                           >
-                            <CheckCircle className="w-4 h-4 text-green-500" />
                             {item}
-                          </motion.div>
+                          </motion.span>
                         </li>
                       ))}
                     </ul>
@@ -606,11 +608,11 @@ const Admissions = () => {
                 </Button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.1, rotate: -3 }} whileTap={{ scale: 0.95 }}>
-                {/* <Button size="lg" variant="outline" className="bg-white/10 text-white border-white hover:bg-white hover:text-blue-900 px-8 py-3 rounded-full transition-all duration-300">
+                <Button size="lg" variant="outline" className="bg-white/10 text-white border-white hover:bg-white hover:text-blue-900 px-8 py-3 rounded-full transition-all duration-300">
                   <Link to="/about" className="flex items-center gap-2">
                     Learn More About Us <Users className="w-5 h-5" />
                   </Link>
-                </Button> */}
+                </Button>
               </motion.div>
             </div>
           </div>

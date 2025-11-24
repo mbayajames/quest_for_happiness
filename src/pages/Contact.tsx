@@ -2,16 +2,33 @@ import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import FloatingContact from "@/components/FloatingContact";
-import { Mail, Phone, MapPin, Send, Clock, Facebook, Instagram, MessageCircle } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
+  MessageCircle,
+  GraduationCap,
+  Home,
+  Shield,
+  UserCheck,
+  Target,
+  Award,
+  BookOpen,
+} from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const ContactPage = () => {
-  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,10 +39,20 @@ const ContactPage = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. We'll get back to you within 24 hours.",
-    });
+
+    const whatsappMessage =
+      `Hello Quest for Happiness!%0A%0A` +
+      `*New Inquiry*%0A%0A` +
+      `Name: ${formData.name}%0A` +
+      `Email: ${formData.email}%0A` +
+      `Phone: ${formData.phone || "Not provided"}%0A` +
+      `Competency Area: ${formData.subject || "General Inquiry"}%0A%0A` +
+      `Message:%0A${formData.message}`;
+
+    const whatsappUrl = `https://wa.me/254758827745?text=${whatsappMessage}`;
+    window.open(whatsappUrl, "_blank");
+
+    // Form is reset silently – no toast/notification
     setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
   };
 
@@ -33,239 +60,284 @@ const ContactPage = () => {
     {
       icon: Phone,
       title: "Phone",
-      details: "+254 700 000 000",
-      link: "tel:+254700000000",
-      subtext: "Mon-Fri, 8:00 AM - 5:00 PM",
-      delay: "delay-100",
+      details: "+254 758 827 745",
+      link: "tel:+254758827745",
+      subtext: "Mon–Fri, 8 AM – 5 PM",
+    },
+    {
+      icon: MessageCircle,
+      title: "WhatsApp",
+      details: "+254 758 827 745",
+      link: "https://wa.me/254758827745",
+      subtext: "Instant replies during hours",
+      openInNewTab: true,
     },
     {
       icon: Mail,
       title: "Email",
       details: "info@questforhappiness.org",
       link: "mailto:info@questforhappiness.org",
-      subtext: "We respond within 24 hours",
-      delay: "delay-200",
+      subtext: "Replies within 24 hours",
     },
     {
       icon: MapPin,
-      title: "Location",
+      title: "Our Center",
       details: "Nairobi, Kenya",
-      link: "#map",
-      subtext: "Visit us by appointment",
-      delay: "delay-300",
+      link: "https://www.google.com/maps/dir/?api=1&destination=Quest+for+Happiness+Nairobi+Kenya&travelmode=driving",
+      subtext: "Tap for directions",
+      isLocation: true,
     },
   ];
 
   const officeHours = [
-    { day: "Monday - Friday", hours: "8:00 AM - 5:00 PM" },
-    { day: "Saturday", hours: "9:00 AM - 1:00 PM" },
-    { day: "Sunday", hours: "Closed" },
+    { day: "Monday – Friday", hours: "8:00 AM – 5:00 PM", icon: Clock },
+    { day: "Saturday", hours: "9:00 AM – 1:00 PM", icon: Clock },
+    { day: "Sunday", hours: "Closed", icon: Clock },
+  ];
+
+  const quickActions = [
+    { icon: UserCheck, title: "Learner Assessment", description: "Schedule evaluation", link: "/assessment" },
+    { icon: Target, title: "Skill Development", description: "Explore pathways", link: "/skills" },
+    { icon: Award, title: "Certification", description: "Get certified", link: "/certification" },
+    { icon: BookOpen, title: "Learning Resources", description: "Access materials", link: "/resources" },
+  ];
+
+  const competencySubjects = [
+    "Digital Literacy & Technology",
+    "Entrepreneurship & Business Skills",
+    "Life Skills & Personal Development",
+    "Vocational & Technical Skills",
+    "Academic Foundation Skills",
+    "Creative Arts & Innovation",
+    "Leadership & Community Engagement",
+    "Other Competency Area",
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <Navigation />
-      
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-hero text-primary-foreground">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">Get In Touch</h1>
-            <p className="text-xl md:text-2xl text-primary-foreground/90 leading-relaxed">
-              Have questions about admissions, sponsorship, or volunteering? We'd love to hear from you
+
+      {/* Hero */}
+      <section className="pt-32 pb-24 bg-gradient-to-br from-blue-700 via-blue-800 to-black text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-5xl md:text-6xl font-black mb-6 leading-tight">
+              Connect With Our CBE Program
+            </h1>
+            <p className="text-xl md:text-2xl text-blue-100 font-light">
+              Ready to build real-world competencies?<br />Chat with us instantly on WhatsApp.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Contact Info Cards */}
-      <section className="py-20 bg-background">
+      {/* Why Reach Out */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 text-center max-w-5xl">
+          <h2 className="text-4xl md:text-5xl font-black text-black mb-8">
+            Why Reach Out to Us?
+          </h2>
+          <p className="text-lg text-gray-700 mb-16">
+            Parents, sponsors, or learners — we're here to help every child thrive through competency-based education.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-10">
+            {[
+              { icon: GraduationCap, title: "Quality Education", desc: "Real-world competency focus" },
+              { icon: Home, title: "Safe Environment", desc: "Day & residential support" },
+              { icon: Shield, title: "Holistic Care", desc: "Education, shelter & emotional support" },
+            ].map((item, i) => (
+              <div key={i} className="group">
+                <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-700 transition-colors">
+                  <item.icon className="w-12 h-12 text-blue-700 group-hover:text-white transition-colors" />
+                </div>
+                <h3 className="text-2xl font-bold text-black mb-3">{item.title}</h3>
+                <p className="text-gray-600">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Actions */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 mb-20">
-            {contactInfo.map((info) => (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {quickActions.map((action, i) => (
+              <Button
+                key={action.title}
+                asChild
+                variant="default"
+                className={`h-32 flex flex-col justify-center items-center text-white font-bold text-sm md:text-base transition-all duration-500 hover:scale-105 hover:shadow-2xl ${
+                  i % 2 === 0 ? "bg-blue-700 hover:bg-blue-800" : "bg-black hover:bg-gray-900"
+                }`}
+              >
+                <a href={action.link}>
+                  <action.icon className="w-10 h-10 mb-3" />
+                  <div>{action.title}</div>
+                  <div className="text-xs opacity-80 mt-1">{action.description}</div>
+                </a>
+              </Button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Info + Form */}
+      <section className="py-24 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-4 gap-8 mb-20">
+            {contactInfo.map((info, i) => (
               <Card
                 key={info.title}
-                className={`p-8 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-scale-in ${info.delay}`}
+                className={`p-8 text-center border-2 border-gray-200 transition-all duration-500 hover:border-blue-700 hover:shadow-xl ${
+                  info.isLocation ? "cursor-pointer hover:bg-blue-50" : ""
+                }`}
+                style={{ animationDelay: `${i * 150}ms` }}
+                onClick={() => info.isLocation && window.open(info.link, "_blank")}
               >
-                <div className="bg-primary/10 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
-                  <info.icon className="w-10 h-10 text-primary" />
+                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-blue-700 flex items-center justify-center">
+                  <info.icon className="w-10 h-10 text-white" />
                 </div>
-                <h3 className="font-bold text-xl mb-3">{info.title}</h3>
-                <a
-                  href={info.link}
-                  className="text-primary hover:text-primary/80 transition-colors text-lg font-medium mb-2 block"
-                >
-                  {info.details}
-                </a>
-                <p className="text-sm text-muted-foreground">{info.subtext}</p>
+                <h3 className="text-xl font-bold text-black mb-3">{info.title}</h3>
+
+                {info.isLocation ? (
+                  <div className="space-y-2">
+                    <p className="text-lg font-semibold text-blue-700">{info.details}</p>
+                    <p className="text-sm text-gray-600">{info.subtext}</p>
+                  </div>
+                ) : (
+                  <>
+                    <a
+                      href={info.link}
+                      className="text-blue-700 font-semibold hover:underline block mb-2"
+                      target={info.openInNewTab ? "_blank" : undefined}
+                      rel={info.openInNewTab ? "noopener noreferrer" : undefined}
+                    >
+                      {info.details}
+                    </a>
+                    <p className="text-sm text-gray-600">{info.subtext}</p>
+                  </>
+                )}
               </Card>
             ))}
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <div className="animate-slide-up">
-              <Card className="p-8 lg:p-10">
-                <h2 className="text-3xl font-bold mb-6">Send Us a Message</h2>
+          {/* Form + Sidebar */}
+          <div className="grid lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
+            {/* Form */}
+            <div>
+              <Card className="p-10 border-2 border-gray-200 shadow-2xl bg-white">
+                <div className="flex items-center gap-4 mb-8">
+                  <MessageCircle className="w-14 h-14 text-blue-700" />
+                  <div>
+                    <h2 className="text-3xl font-black text-black">Start a WhatsApp Chat</h2>
+                    <p className="text-gray-600">Fill in your details — we’ll open WhatsApp instantly</p>
+                  </div>
+                </div>
+
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium mb-2">
-                        Full Name *
-                      </label>
+                      <label className="block text-sm font-semibold mb-2 text-black">Full Name *</label>
                       <Input
-                        id="name"
                         required
+                        placeholder="John Doe"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="John Doe"
-                        className="h-12"
+                        className="h-12 border-2 border-gray-300 focus:border-blue-700 transition-colors"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium mb-2">
-                        Email Address *
-                      </label>
+                      <label className="block text-sm font-semibold mb-2 text-black">Email Address *</label>
                       <Input
-                        id="email"
                         type="email"
                         required
+                        placeholder="john@example.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="john@example.com"
-                        className="h-12"
+                        className="h-12 border-2 border-gray-300 focus:border-blue-700 transition-colors"
                       />
                     </div>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium mb-2">
-                        Phone Number
-                      </label>
+                      <label className="block text-sm font-semibold mb-2 text-black">Phone Number</label>
                       <Input
-                        id="phone"
                         type="tel"
+                        placeholder="+254 700 000 000"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder="+254 700 000 000"
-                        className="h-12"
+                        className="h-12 border-2 border-gray-300 focus:border-blue-700 transition-colors"
                       />
                     </div>
                     <div>
-                      <label htmlFor="subject" className="block text-sm font-medium mb-2">
-                        Subject *
-                      </label>
-                      <Select
-                        value={formData.subject}
-                        onValueChange={(value) => setFormData({ ...formData, subject: value })}
-                      >
-                        <SelectTrigger className="h-12">
-                          <SelectValue placeholder="Select a subject" />
+                      <label className="block text-sm font-semibold mb-2 text-black">Interested In *</label>
+                      <Select value={formData.subject} onValueChange={(v) => setFormData({ ...formData, subject: v })}>
+                        <SelectTrigger className="h-12 border-2 border-gray-300 focus:border-blue-700">
+                          <SelectValue placeholder="Choose competency area" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="admissions">Admissions Inquiry</SelectItem>
-                          <SelectItem value="sponsorship">Child Sponsorship</SelectItem>
-                          <SelectItem value="volunteer">Volunteering</SelectItem>
-                          <SelectItem value="donation">Make a Donation</SelectItem>
-                          <SelectItem value="partnership">Partnership Opportunity</SelectItem>
-                          <SelectItem value="other">Other</SelectItem>
+                          {competencySubjects.map((s) => (
+                            <SelectItem key={s} value={s}>{s}</SelectItem>
+                          ))}
                         </SelectContent>
                       </Select>
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium mb-2">
-                      Your Message *
-                    </label>
+                    <label className="block text-sm font-semibold mb-2 text-black">Your Message / Goals *</label>
                     <Textarea
-                      id="message"
                       required
+                      placeholder="Tell us how we can help you or your child..."
+                      rows={6}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Tell us how we can help you..."
-                      rows={8}
-                      className="resize-none"
+                      className="resize-none border-2 border-gray-300 focus:border-blue-700 transition-colors"
                     />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full group">
-                    Send Message
-                    <Send className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full bg-gradient-to-r from-blue-700 to-green-600 hover:from-blue-800 hover:to-green-700 text-white font-bold text-lg h-14 transition-all hover:scale-105 shadow-lg"
+                  >
+                    <MessageCircle className="mr-3 w-7 h-7" />
+                    Open WhatsApp Chat Now
                   </Button>
                 </form>
               </Card>
             </div>
 
-            {/* Office Hours & Social */}
-            <div className="animate-slide-up delay-200">
-              <Card className="p-8 mb-8">
+            {/* Sidebar */}
+            <div className="space-y-10">
+              <Card className="p-8 border-2 border-gray-200">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="bg-primary/10 rounded-full w-12 h-12 flex items-center justify-center">
-                    <Clock className="w-6 h-6 text-primary" />
+                  <Clock className="w-9 h-9 text-blue-700" />
+                  <h3 className="text-2xl font-black text-black">Center Hours</h3>
+                </div>
+                {officeHours.map((item, i) => (
+                  <div key={i} className="flex justify-between py-4 border-b border-gray-200 last:border-0">
+                    <span className="font-medium text-black">{item.day}</span>
+                    <span className="text-gray-600">{item.hours}</span>
                   </div>
-                  <h3 className="text-2xl font-bold">Office Hours</h3>
-                </div>
-                <div className="space-y-4">
-                  {officeHours.map((schedule, index) => (
-                    <div key={index} className="flex justify-between items-center py-3 border-b border-border last:border-0">
-                      <span className="font-medium">{schedule.day}</span>
-                      <span className="text-muted-foreground">{schedule.hours}</span>
-                    </div>
-                  ))}
-                </div>
+                ))}
               </Card>
 
-              <Card className="p-8 mb-8">
-                <h3 className="text-2xl font-bold mb-6">Connect With Us</h3>
-                <div className="space-y-4">
-                  <Button variant="outline" className="w-full justify-start h-14 text-lg" asChild>
-                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                      <Facebook className="w-5 h-5 mr-3" />
-                      Follow on Facebook
-                    </a>
-                  </Button>
-                  <Button variant="outline" className="w-full justify-start h-14 text-lg" asChild>
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                      <Instagram className="w-5 h-5 mr-3" />
-                      Follow on Instagram
-                    </a>
-                  </Button>
-                  <Button variant="outline" className="w-full justify-start h-14 text-lg" asChild>
-                    <a href="https://wa.me/254700000000" target="_blank" rel="noopener noreferrer">
-                      <MessageCircle className="w-5 h-5 mr-3" />
-                      Chat on WhatsApp
-                    </a>
-                  </Button>
-                </div>
-              </Card>
-
-              <Card className="p-8 bg-primary text-primary-foreground">
-                <h3 className="text-2xl font-bold mb-4">Visit Our Campus</h3>
-                <p className="text-primary-foreground/90 mb-4">
-                  We welcome visitors! Schedule an appointment to tour our facilities and meet our team.
-                </p>
-                <Button variant="secondary" className="w-full bg-white text-primary hover:bg-white/90">
-                  Schedule a Visit
+              <Card className="p-10 bg-gradient-to-br from-blue-700 to-black text-white text-center shadow-2xl">
+                <h3 className="text-2xl font-black mb-4">Need Help Right Now?</h3>
+                <p className="mb-8 opacity-90 text-lg">We're online and ready to chat!</p>
+                <Button asChild size="lg" className="w-full bg-white text-blue-700 hover:bg-gray-100 font-bold h-14 text-lg">
+                  <a href="https://wa.me/254758827745?text=Hello!%20I'm%20visiting%20from%20your%20website%20" target="_blank" rel="noopener noreferrer">
+                    <MessageCircle className="w-8 h-8 mr-3" />
+                    Start WhatsApp Chat
+                  </a>
                 </Button>
               </Card>
             </div>
-          </div>
-
-          {/* Map Placeholder */}
-          <div className="mt-20">
-            <h2 className="text-3xl font-bold text-center mb-8">Find Us</h2>
-            <Card className="p-4 bg-muted" id="map">
-              <div className="aspect-video bg-primary/10 rounded-lg flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="w-16 h-16 text-primary mx-auto mb-4" />
-                  <p className="text-xl font-bold mb-2">Quest for Happiness Ministry</p>
-                  <p className="text-muted-foreground">Nairobi, Kenya</p>
-                  <p className="text-sm text-muted-foreground mt-4">Google Maps integration coming soon</p>
-                </div>
-              </div>
-            </Card>
           </div>
         </div>
       </section>

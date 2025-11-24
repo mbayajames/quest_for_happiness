@@ -4,6 +4,7 @@ type ToastProps = {
   variant?: "default" | "destructive"
   className?: string
   children?: React.ReactNode
+  duration?: number
 }
 
 type ToastActionElement = React.ReactElement
