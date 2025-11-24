@@ -207,6 +207,10 @@ All colors MUST be HSL.
     animation-delay: 0.6s;
   }
 
+  .delay-450 {
+    animation-delay: 0.45s;
+  }
+
   .delay-800 {
     animation-delay: 0.8s;
   }
@@ -234,18 +238,6 @@ All colors MUST be HSL.
     animation: float 3s ease-in-out infinite;
   }
 
-  .animated-star {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background-color: white;
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-    top: 0;
-    left: 0;
-    animation-delay: 0s;
-    opacity: 0.2;
-  }
 
   .animate-fade-in-up {
     animation: fade-in-up 0.8s ease-out;
@@ -291,4 +283,368 @@ All colors MUST be HSL.
       transform: translateX(0);
     }
   }
+}
+
+
+/* Typewriter Effect - NO CURSOR */
+.typewriter {
+  animation: typing 3.5s steps(30, end) forwards;
+  animation-delay: 0.5s;
+  opacity: 0;
+}
+@keyframes typing {
+  from { width: 0; opacity: 1; }
+  to   { width: 100%; opacity: 1; }
+}
+
+/* Slide + Lift */
+@keyframes slideLift {
+  0%   { transform: translateX(-120px) translateY(20px); opacity: 0; }
+  100% { transform: translateX(0) translateY(0); opacity: 1; }
+}
+.animate-slide-lift {
+  animation: slideLift 1s ease-out forwards;
+  animation-delay: 0.4s;
+  opacity: 0;
+}
+
+/* Slide + Glow */
+@keyframes slideGlow {
+  0%   { transform: translateX(100px); opacity: 0; filter: blur(4px); }
+  70%  { filter: blur(0); }
+  100% { transform: translateX(0); opacity: 1; text-shadow: 0 0 20px rgba(96,165,250,.6); }
+}
+.animate-slide-glow {
+  animation: slideGlow 1.2s ease-out forwards;
+  animation-delay: 0.7s;
+  opacity: 0;
+}
+
+/* Rise */
+@keyframes rise {
+  0%   { transform: translateY(30px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+.animate-rise {
+  animation: rise 1s ease-out forwards;
+  animation-delay: 1s;
+  opacity: 0;
+}
+
+/* Bounce In */
+@keyframes bounceIn {
+  0%   { transform: scale(0.3); opacity: 0; }
+  50%  { transform: scale(1.1); }
+  70%  { transform: scale(0.9); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.animate-bounce-in {
+  animation: bounceIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+/* Pop */
+@keyframes pop {
+  0%   { transform: scale(0); opacity: 0; }
+  80%  { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.animate-pop {
+  animation: pop 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+/* Scale + Float */
+@keyframes scaleFloat {
+  0%   { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.animate-scale-float {
+  animation: scaleFloat 0.8s ease-out forwards;
+}
+
+/* Flip In */
+@keyframes flipIn {
+  0%   { transform: perspective(400px) rotateY(90deg); opacity: 0; }
+  100% { transform: perspective(400px) rotateY(0); opacity: 1; }
+}
+.animate-flip-in {
+  animation: flipIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+/* Slide + Glow Border */
+@keyframes slideGlowBorder {
+  0%   { transform: translateY(40px); opacity: 0; border-color: transparent; }
+  100% { transform: translateY(0); opacity: 1; border-color: #3b82f6; box-shadow: 0 0 20px rgba(59,130,246,.3); }
+}
+.animate-slide-glow-border {
+  animation: slideGlowBorder 1s ease-out forwards;
+  animation-delay: 1.2s;
+  opacity: 0;
+}
+
+/* Marquee */
+@keyframes marquee {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  display: inline-block;
+  animation: marquee 12s linear infinite;
+}
+
+/* Star Twinkle */
+@keyframes starTwinkle {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Custom Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+.animate-float { animation: float linear infinite; }
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+.animate-typewriter {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid #fff;
+  animation: typing 3s steps(20) forwards, blink 0.7s infinite;
+}
+
+.animate-spin-slow { animation: spin 3s linear infinite; }
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-count-up { animation: countUp 1.5s ease-out forwards; }
+
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.animate-zoom-in { animation: zoomIn 0.4s ease-out; }
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+}
+@supports (scrollbar-width: none) {
+  .scrollbar-hide {
+    scrollbar-width: none;
+  }
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  position: relative;
+  min-width: 100%;
+}
+
+.animated-star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  top: var(--top);
+  left: var(--left);
+  animation: twinkle 4s infinite;
+  animation-delay: var(--delay);
+  opacity: 0;
+}
+.animated-star::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, white 10%, transparent 20%);
+  transform: translate(-50%, -50%);
+  animation: sparkle 3s infinite;
+}
+
+.animate-zoom {
+  animation: zoom 20s infinite alternate;
+}
+@keyframes zoom {
+  from { transform: scale(1.1); }
+  to { transform: scale(1.2); }
+}
+
+.animated-star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 4s infinite;
+  opacity: 0;
+}
+.animated-star::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, white 10%, transparent 20%);
+  transform: translate(-50%, -50%);
+  animation: sparkle 3s infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+@keyframes sparkle {
+  0%, 100% { transform: translate(-50%, -50%) scale(0.5); opacity: 0.8; }
+  50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.3; }
+}
+
+.animate-bounce-slow {
+  animation: bounce 3s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes zoom {
+  0% { transform: scale(1.1); }
+  100% { transform: scale(1.15); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-twinkle {
+  animation: twinkle 4s infinite ease-in-out;
+}
+
+.animate-zoom {
+  animation: zoom 20s infinite alternate ease-in-out;
+}
+
+.animate-float {
+  animation: float 6s infinite ease-in-out;
+}
+
+@keyframes expand {
+  from { width: 0; }
+  to { width: 50%; }
+}
+.animate-expand {
+  animation: expand 0.8s ease-out forwards;
+}
+.delay-1000 {
+  animation-delay: 1s;
+}
+
+@keyframes zoom-slow {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+.animate-zoom-slow {
+  animation: zoom-slow 24s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1); }
+}
+.animate-twinkle {
+  animation: twinkle 4s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+.animate-float {
+  animation: float 6s infinite ease-in-out;
+}
+
+/* for hero */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: inline-block;
+  animation: marquee 50s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes zoom-slow {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.animate-zoom-slow {
+  animation: zoom-slow 25s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.animate-twinkle {
+  animation: twinkle 4s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
