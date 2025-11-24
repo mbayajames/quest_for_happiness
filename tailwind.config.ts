@@ -164,6 +164,61 @@ export default {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0.9" },
         },
+        "typewriter": {
+    from: { width: "0" },
+    to: { width: "100%" },
+  },
+  "blink": {
+    "50%": { "border-color": "transparent" },
+  },
+  "slide-lift": {
+    from: { transform: "translateY(30px)", opacity: "0" },
+    to: { transform: "translateY(0)", opacity: "1" },
+  },
+  "slide-glow": {
+    from: { transform: "translateY(30px)", opacity: "0", filter: "drop-shadow(0 0 0 rgba(59,130,246,0))" },
+    to: { transform: "translateY(0)", opacity: "1", filter: "drop-shadow(0 0 20px rgba(59,130,246,0.6))" },
+  },
+  "rise": {
+    from: { transform: "translateY(15px)", opacity: "0" },
+    to: { transform: "translateY(0)", opacity: "1" },
+  },
+  "bounce-in": {
+    "0%": { transform: "scale(0.3)", opacity: "0" },
+    "50%": { transform: "scale(1.05)" },
+    "70%": { transform: "scale(0.9)" },
+    "100%": { transform: "scale(1)", opacity: "1" },
+  },
+  "pop": {
+    "0%": { transform: "scale(0.8)", opacity: "0" },
+    "100%": { transform: "scale(1)", opacity: "1" },
+  },
+  "scale-float": {
+    "0%": { transform: "scale(0.9) translateY(10px)", opacity: "0" },
+    "100%": { transform: "scale(1) translateY(0)", opacity: "1" },
+  },
+  "flip-in": {
+    from: { transform: "perspective(400px) rotateY(90deg)", opacity: "0" },
+    to: { transform: "perspective(400px) rotateY(0)", opacity: "1" },
+  },
+  "slide-glow-border": {
+    from: { "border-color": "transparent", "box-shadow": "0 0 0 rgba(59,130,246,0)" },
+    to: { "border-color": "#3b82f6", "box-shadow": "0 0 20px rgba(59,130,246,0.4)" },
+  },
+  "marquee": {
+    from: { transform: "translateX(0)" },
+    to: { transform: "translateX(-50%)" },
+  },
+  "ping": {
+    "75%, 100%": { transform: "scale(2)", opacity: "0" },
+  },
+  "star-twinkle": {
+    "0%, 100%": { opacity: "0.4", transform: "scale(0.8)" },
+    "50%": { opacity: "1", transform: "scale(1.2)" },
+  },
+      },
+      transitionDelay: {
+        '400': '400ms',
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
