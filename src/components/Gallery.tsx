@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-school.jpg";
@@ -16,6 +17,7 @@ import {
 const Gallery = () => {
   const [activeCategory, setActiveCategory] = useState("all");
   const [hoveredImage, setHoveredImage] = useState<number | null>(null);
+  const navigate = useNavigate();
 
   const categories = [
     { id: "all", label: "All", icon: Camera },
@@ -36,6 +38,10 @@ const Gallery = () => {
   const filteredImages = activeCategory === "all" 
     ? images 
     : images.filter(img => img.category === activeCategory);
+
+  const handleViewFullGallery = () => {
+    navigate("/gallery");
+  };
 
   return (
     <section id="gallery" className="py-20 bg-white">
@@ -102,7 +108,6 @@ const Gallery = () => {
                 
                 {/* Content Overlay */}
                 <div className="absolute inset-0 p-6 flex flex-col justify-between">
-                  {/* Top Badge */}
                   <div className="flex justify-between items-start">
                     <div className="bg-white/20 backdrop-blur-sm rounded-full px-3 py-1">
                       <span className="text-white text-xs font-medium uppercase tracking-wide">
@@ -118,17 +123,12 @@ const Gallery = () => {
                     </div>
                   </div>
                   
-                  {/* Bottom Content */}
                   <div className={`transform transition-all duration-500 ${
                     hoveredImage === index ? "translate-y-0 opacity-100" : "translate-y-4 opacity-90"
                   }`}>
                     <h3 className="text-white font-bold text-xl mb-2 leading-tight">
                       {image.title}
                     </h3>
-                    <p className="text-blue-200 text-sm font-medium flex items-center gap-1">
-                      View More
-                      <ChevronRight className="w-4 h-4" />
-                    </p>
                   </div>
                 </div>
 
@@ -151,9 +151,10 @@ const Gallery = () => {
             <p className="text-gray-600 mb-6 max-w-md mx-auto">
               Explore our complete collection of memories and moments that define our mission.
             </p>
-            <Button 
-              variant="default" 
+            <Button
+              variant="default"
               size="lg"
+              onClick={handleViewFullGallery}
               className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center gap-2 mx-auto"
             >
               View Full Gallery
@@ -162,7 +163,6 @@ const Gallery = () => {
           </div>
         </div>
       </div>
-
     </section>
   );
 };
