@@ -1,6 +1,5 @@
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
-import FloatingContact from "@/components/FloatingContact";
+// This component is used as a section on the home page; avoid rendering
+// global layout elements (Navigation, Footer, FloatingContact) here.
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
@@ -104,9 +103,7 @@ const Admissions = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white overflow-hidden">
-      <Navigation />
-      <FloatingContact />
+    <div className="bg-white overflow-hidden">
 
       {/* Animated Background Particles */}
       <div className="fixed inset-0 pointer-events-none">
@@ -616,8 +613,6 @@ const Admissions = () => {
           </div>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 };
