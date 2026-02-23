@@ -2,9 +2,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-school.jpg";
-import cbeImage from "@/assets/cbc-learning.jpg";
-import childrensHomeImage from "@/assets/childrens-home.jpg";
+import photo1 from "@/assets/PHOTO-2025-11-24-01-25-04.jpg";
+import photo2 from "@/assets/PHOTO-2025-11-24-01-25-36.jpg";
+import photo3 from "@/assets/PHOTO-2025-11-24-01-27-33.jpg";
+import photo4 from "@/assets/PHOTO-2025-11-24-01-28-43.jpg";
+import photo5 from "@/assets/PHOTO-2025-11-24-01-28-45.jpg";
+import photo6 from "@/assets/PHOTO-2025-11-24-01-29-20.jpg";
 import { 
   Camera, 
   Home, 
@@ -27,12 +30,12 @@ const Gallery = () => {
   ];
 
   const images = [
-    { src: heroImage, category: "academics", title: "Classroom Learning" },
-    { src: cbeImage, category: "academics", title: "CBE Projects" },
-    { src: childrensHomeImage, category: "home", title: "Children's Care" },
-    { src: heroImage, category: "events", title: "School Events" },
-    { src: cbeImage, category: "academics", title: "Student Activities" },
-    { src: childrensHomeImage, category: "home", title: "Daily Life" },
+    { src: photo1, category: "academics", title: "Classroom Learning" },
+    { src: photo2, category: "academics", title: "CBE Projects" },
+    { src: photo3, category: "home", title: "Children's Care" },
+    { src: photo4, category: "events", title: "School Events" },
+    { src: photo5, category: "academics", title: "Student Activities" },
+    { src: photo6, category: "home", title: "Daily Life" },
   ];
 
   const filteredImages = activeCategory === "all" 
