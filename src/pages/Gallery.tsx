@@ -51,15 +51,52 @@ import photo43 from "@/assets/8635DF24-D4A5-4362-9B32-1F43C74DD918.jpeg";
 import photo44 from "@/assets/A0FE7894-B6E4-4E63-A732-DA70BF5279DF.jpeg";
 import photo45 from "@/assets/AEF083E4-DB16-4F37-AD03-E91C20EF3463.jpeg";
 import photo46 from "@/assets/BA930180-F653-4CC5-860D-34D64D3782F1.jpeg";
-// import photo47 from "@/assets/cbc-learning.jpg";
-// import photo48 from "@/assets/childrens-home.jpg";
-// import photo49 from "@/assets/hero-school.jpg";
 import photo50 from "@/assets/WhatsApp Image 2023-04-01 at 00.47.41.jpeg";
 import photo51 from "@/assets/WhatsApp Image 2023-04-01 at 00.47.43.jpeg";
 import photo52 from "@/assets/WhatsApp Image 2023-04-01 at 00.47.45.jpeg";
 import photo53 from "@/assets/WhatsApp Image 2023-04-03 at 01.18.36.jpeg";
 import photo54 from "@/assets/WhatsApp Image 2023-04-03 at 02.42.55.jpeg";
 import photo55 from "@/assets/WhatsApp Image 2023-04-04 at 23.38.13.jpeg";
+import photo56 from "@/assets/PHOTO-2026-02-23-04-56-33.jpg";
+import photo57 from "@/assets/PHOTO-2026-02-23-04-57-30.jpg";
+import photo58 from "@/assets/PHOTO-2026-02-23-04-58-30.jpg";
+import photo59 from "@/assets/PHOTO-2026-02-23-05-00-22.jpg";
+import photo60 from "@/assets/PHOTO-2026-02-23-05-02-50.jpg";
+import photo61 from "@/assets/PHOTO-2026-02-23-05-05-57.jpg";
+import photo62 from "@/assets/PHOTO-2026-02-23-05-07-15.jpg";
+import photo63 from "@/assets/PHOTO-2026-02-23-05-08-15.jpg";
+import photo64 from "@/assets/PHOTO-2026-02-23-05-09-54.jpg";
+import photo65 from "@/assets/PHOTO-2026-02-23-05-12-08.jpg";
+import photo66 from "@/assets/PHOTO-2026-02-23-05-13-24.jpg";
+import photo67 from "@/assets/PHOTO-2026-02-23-05-14-10.jpg";
+import photo68 from "@/assets/PHOTO-2026-02-23-05-15-27.jpg";
+import photo69 from "@/assets/PHOTO-2026-02-23-05-16-37.jpg";
+import photo70 from "@/assets/PHOTO-2026-02-23-05-17-35.jpg";
+import photo71 from "@/assets/PHOTO-2026-02-23-05-18-30.jpg";
+import photo72 from "@/assets/PHOTO-2026-02-23-05-19-15.jpg";
+import photo73 from "@/assets/PHOTO-2026-02-23-05-20-06.jpg";
+import photo74 from "@/assets/PHOTO-2026-02-23-05-20-49.jpg";
+import photo75 from "@/assets/464069793_8588462357867234_2389732815945287865_n.jpg";
+import photo76 from "@/assets/480740660_1046947450804362_9126967595876651031_n.jpg";
+import photo77 from "@/assets/480962952_1046947674137673_3079006825770371397_n.jpg";
+import photo78 from "@/assets/481046914_1047578094074631_4355613992284958397_n.jpg";
+import photo79 from "@/assets/481116568_1046947744137666_4228504898625980706_n.jpg";
+import photo80 from "@/assets/481214117_1046947657471008_1492289149291152034_n.jpg";
+import photo81 from "@/assets/481218593_1046947467471027_6916066743495429974_n.jpg";
+import photo82 from "@/assets/481272045_1046947650804342_141478251571235094_n.jpg";
+import photo83 from "@/assets/481304138_1046947464137694_1815785147255671817_n.jpg";
+import photo84 from "@/assets/82902621_2751405988239596_7768075394271412224_n.jpg";
+import photo85 from "@/assets/82903624_2750424705004391_4470374499103014912_n.jpg";
+import photo86 from "@/assets/82952005_2747415108638684_3640447836669083648_n (1).jpg";
+import photo87 from "@/assets/83028716_2750424741671054_3260114511079669760_n.jpg";
+import photo88 from "@/assets/83341415_2750426621670866_8322993067359469568_n.jpg";
+import photo89 from "@/assets/83708894_2761496480563880_8312137004942884864_n.jpg";
+import photo90 from "@/assets/WhatsApp Image 2023-04-01 at 00.47.41 2.jpeg";
+import photo91 from "@/assets/WhatsApp Image 2023-04-01 at 00.47.45 2.jpeg";
+import photo92 from "@/assets/WhatsApp Image 2023-04-01 at 00.47.48 (1).jpeg";
+import photo93 from "@/assets/WhatsApp Image 2023-04-01 at 00.47.49.jpeg";
+import photo94 from "@/assets/WhatsApp Image 2023-04-01 at 00.47.50.jpeg";
+import photo95 from "@/assets/82597761_2745412528838942_2247595861041217536_n-1.jpg";
 import {
   Camera,
   Facebook,
@@ -135,15 +172,52 @@ const GalleryPage = () => {
     { src: photo44, category: "events", title: "Awards Ceremony", description: "Recognizing achievements" },
     { src: photo45, category: "academics", title: "Staff Members", description: "Our team" },
     { src: photo46, category: "academics", title: "Education Program", description: "Learning initiatives" },
-    // { src: photo47, category: "academics", title: "CBC Learning", description: "Competency-based education" },
-    // { src: photo48, category: "childrens-home", title: "Children's Home", description: "Residential care" },
-    // { src: photo49, category: "academics", title: "School Building", description: "Main campus" },
     { src: photo50, category: "events", title: "Community Event", description: "Local gathering" },
     { src: photo51, category: "events", title: "Outreach Program", description: "Community support" },
     { src: photo52, category: "events", title: "Volunteer Work", description: "Helping hands" },
     { src: photo53, category: "events", title: "Fundraising", description: "Support campaign" },
     { src: photo54, category: "events", title: "Partnership Event", description: "Collaboration" },
     { src: photo55, category: "events", title: "Donation Drive", description: "Giving back" },
+    { src: photo56, category: "events", title: "Recent Event 1", description: "Community gathering" },
+    { src: photo57, category: "events", title: "Recent Event 2", description: "School activity" },
+    { src: photo58, category: "academics", title: "Classroom Moment 1", description: "Learning in progress" },
+    { src: photo59, category: "academics", title: "Classroom Moment 2", description: "Student engagement" },
+    { src: photo60, category: "events", title: "Recent Event 3", description: "Community event" },
+    { src: photo61, category: "childrens-home", title: "Home Life 1", description: "Daily activities" },
+    { src: photo62, category: "childrens-home", title: "Home Life 2", description: "Children activities" },
+    { src: photo63, category: "academics", title: "Learning Session 1", description: "Class activities" },
+    { src: photo64, category: "events", title: "Event Activities", description: "Celebration moments" },
+    { src: photo65, category: "academics", title: "Learning Session 2", description: "Study time" },
+    { src: photo66, category: "events", title: "School Gathering", description: "Assembly time" },
+    { src: photo67, category: "childrens-home", title: "Home Moments 1", description: "Care activities" },
+    { src: photo68, category: "academics", title: "Classroom Interaction", description: "Student learning" },
+    { src: photo69, category: "events", title: "Event Celebration", description: "Special occasion" },
+    { src: photo70, category: "childrens-home", title: "Home Moments 2", description: "Family time" },
+    { src: photo71, category: "academics", title: "Study Activity", description: "Academic work" },
+    { src: photo72, category: "events", title: "Community Activity", description: "Group event" },
+    { src: photo73, category: "childrens-home", title: "Home Care", description: "Children care" },
+    { src: photo74, category: "academics", title: "Learning Moment", description: "Class moment" },
+    { src: photo75, category: "events", title: "Social Event 1", description: "Community gathering" },
+    { src: photo76, category: "childrens-home", title: "Children Together 1", description: "Group activity" },
+    { src: photo77, category: "academics", title: "Academic Program 1", description: "Educational program" },
+    { src: photo78, category: "events", title: "Social Event 2", description: "Celebration event" },
+    { src: photo79, category: "childrens-home", title: "Children Together 2", description: "Bonding time" },
+    { src: photo80, category: "academics", title: "Academic Program 2", description: "Learning initiative" },
+    { src: photo81, category: "events", title: "Event Moment 1", description: "Special event" },
+    { src: photo82, category: "childrens-home", title: "Home Activities 1", description: "Daily life" },
+    { src: photo83, category: "academics", title: "Class Session", description: "Teaching moment" },
+    { src: photo84, category: "events", title: "Event Moment 2", description: "Community event" },
+    { src: photo85, category: "childrens-home", title: "Home Activities 2", description: "Care moments" },
+    { src: photo86, category: "academics", title: "School Activities", description: "Academic activities" },
+    { src: photo87, category: "events", title: "Celebration Event", description: "Festival moment" },
+    { src: photo88, category: "childrens-home", title: "Home Life 3", description: "Living space" },
+    { src: photo89, category: "academics", title: "Teaching Moment", description: "Educational delivery" },
+    { src: photo90, category: "events", title: "Community Moment 1", description: "Social gathering" },
+    { src: photo91, category: "childrens-home", title: "Children Moment 1", description: "Kid activities" },
+    { src: photo92, category: "academics", title: "School Moment 1", description: "Academic scene" },
+    { src: photo93, category: "events", title: "Community Moment 2", description: "Group activity" },
+    { src: photo94, category: "childrens-home", title: "Children Moment 2", description: "Play time" },
+    { src: photo95, category: "academics", title: "School Moment 2", description: "Educational setting" },
   ];
 
   const filteredImages =
