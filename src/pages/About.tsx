@@ -81,7 +81,7 @@ const About = () => {
     },
     {
       icon: BookOpen,
-      title: "CBC Compliant",
+      title: "CBE Compliant",
       description: "Fully aligned with Competency-Based Curriculum requirements"
     },
     {
