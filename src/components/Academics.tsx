@@ -1,6 +1,5 @@
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
-import FloatingContact from "@/components/FloatingContact";
+// This component is used as a section on the home page; avoid rendering
+// global layout elements (Navigation, Footer, FloatingContact) here.
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
@@ -66,7 +65,7 @@ const Admissions = () => {
     {
       icon: GraduationCap,
       title: "Quality Education",
-      description: "CBC-based curriculum with modern teaching methods"
+      description: "CBE-based curriculum with modern teaching methods"
     },
     {
       icon: Shield,
@@ -104,9 +103,7 @@ const Admissions = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white overflow-hidden">
-      <Navigation />
-      <FloatingContact />
+    <div className="bg-white overflow-hidden">
 
       {/* Animated Background Particles */}
       <div className="fixed inset-0 pointer-events-none">
@@ -216,7 +213,7 @@ const Admissions = () => {
             </motion.h2>
 
             <motion.p initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }} className="text-lg text-gray-700 leading-relaxed">
-              We welcome learners from diverse backgrounds to join our CBC-based primary and junior school.
+              We welcome learners from diverse backgrounds to join our CBE-based primary and junior school.
               Quest for Happiness Ministry provides a supportive learning environment for all children,
               including those from our Children's Home. Every child deserves quality education in a nurturing,
               loving community.
@@ -231,7 +228,7 @@ const Admissions = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">Our Academic Levels</h2>
             <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="w-24 h-1 bg-blue-600 mx-auto" />
-            <p className="text-lg text-gray-600 mt-4">Competency-Based Curriculum (CBC) delivered with care and excellence</p>
+            <p className="text-lg text-gray-600 mt-4">Competency-Based Curriculum (CBE) delivered with care and excellence</p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-10 max-w-7xl mx-auto">
@@ -616,8 +613,6 @@ const Admissions = () => {
           </div>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 };
