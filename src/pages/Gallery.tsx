@@ -5,10 +5,17 @@ import Footer from "@/components/Footer";
 import FloatingContact from "@/components/FloatingContact";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-school.jpg";
-import cbeImage from "@/assets/cbc-learning.jpg";
-import childrensHomeImage from "@/assets/childrens-home.jpg";
-import "./Gallery.css";
+import photo1 from "@/assets/PHOTO-2025-11-24-01-25-04.jpg";
+import photo2 from "@/assets/PHOTO-2025-11-24-01-25-36.jpg";
+import photo3 from "@/assets/PHOTO-2025-11-24-01-27-33.jpg";
+import photo4 from "@/assets/PHOTO-2025-11-24-01-28-43.jpg";
+import photo5 from "@/assets/465028379_8657470624299740_1888177700985474277_n.jpg";
+import photo6 from "@/assets/PHOTO-2025-11-24-01-29-20.jpg";
+import photo7 from "@/assets/PHOTO-2025-11-24-01-30-22.jpg";
+import photo8 from "@/assets/PHOTO-2025-11-24-01-31-12.jpg";
+import photo9 from "@/assets/PHOTO-2025-11-24-01-31-13.jpg";
+import photo10 from "@/assets/PHOTO-2025-11-24-01-32-04.jpg";
+import photo11 from "@/assets/486180182_1068557711976669_2660399759322226140_n.jpg";
 import {
   Camera,
   Facebook,
@@ -44,18 +51,18 @@ const GalleryPage = () => {
   ];
 
   const images = [
-    { src: heroImage, category: "academics", title: "Classroom Learning", description: "Students engaged in CBE lessons" },
-    { src: cbeImage, category: "academics", title: "CBE Projects", description: "Hands-on learning activities" },
-    { src: childrensHomeImage, category: "home", title: "Children's Care", description: "Daily life at the home" },
-    { src: heroImage, category: "events", title: "School Events", description: "Academic day celebrations" },
-    { src: cbeImage, category: "sports", title: "Sports Day", description: "Annual athletics competition" },
-    { src: childrensHomeImage, category: "home", title: "Family Time", description: "Bonding and care" },
-    { src: heroImage, category: "academics", title: "Science Lab", description: "STEM education in action" },
-    { src: cbeImage, category: "arts", title: "Creative Arts", description: "Music and drama performances" },
-    { src: childrensHomeImage, category: "events", title: "Graduation Day", description: "Celebrating achievements" },
-    { src: heroImage, category: "academics", title: "Library Time", description: "Reading and research" },
-    { src: cbeImage, category: "sports", title: "Football Team", description: "Inter-school competitions" },
-    { src: childrensHomeImage, category: "home", title: "Meal Time", description: "Nutritious meals together" },
+    { src: photo1, category: "academics", title: "Classroom Learning", description: "Students engaged in CBE lessons" },
+    { src: photo2, category: "academics", title: "CBE Projects", description: "Hands-on learning activities" },
+    { src: photo3, category: "home", title: "Children's Care", description: "Daily life at the home" },
+    { src: photo4, category: "events", title: "School Events", description: "Academic day celebrations" },
+    { src: photo5, category: "sports", title: "Sports Day", description: "Annual athletics competition" },
+    { src: photo6, category: "home", title: "Family Time", description: "Bonding and care" },
+    { src: photo7, category: "academics", title: "Science Lab", description: "STEM education in action" },
+    { src: photo8, category: "arts", title: "Creative Arts", description: "Music and drama performances" },
+    { src: photo9, category: "events", title: "Graduation Day", description: "Celebrating achievements" },
+    { src: photo10, category: "academics", title: "Library Time", description: "Reading and research" },
+    { src: photo11, category: "sports", title: "Football Team", description: "Inter-school competitions" },
+    { src: photo3, category: "home", title: "Meal Time", description: "Nutritious meals together" },
   ];
 
   const filteredImages = activeCategory === "all"
@@ -182,9 +189,9 @@ const GalleryPage = () => {
           <h2 className="text-4xl font-bold text-blue-900 mb-10">Memorable Moments</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { title: "CBC Innovation Fair", desc: "Our learners showcased incredible creativity during the annual CBC exhibition.", img: cbeImage },
-              { title: "Charity Walk", desc: "A walk to raise funds for our Children's Home and community outreach programs.", img: childrensHomeImage },
-              { title: "Sports Festival", desc: "A day of fun, teamwork, and sportsmanship among our students.", img: heroImage },
+              { title: "CBE Innovation Fair", desc: "Our learners showcased incredible creativity during the annual CBE exhibition.", img: photo1 },
+              { title: "Charity Walk", desc: "A walk to raise funds for our Children's Home and community outreach programs.", img: photo2 },
+              { title: "Sports Festival", desc: "A day of fun, teamwork, and sportsmanship among our students.", img: photo3 },
             ].map((event) => (
               <Card key={event.title} className="overflow-hidden hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-200 animate-fade-in memorable-card">
                 <img src={event.img} alt={event.title} className="w-full h-56 object-cover" />

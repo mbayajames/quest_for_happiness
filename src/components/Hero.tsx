@@ -8,9 +8,9 @@ import Autoplay from "embla-carousel-autoplay";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import HeroSchool from "../assets/WhatsApp Image 2023-04-01 at 00.47.41.jpeg";
-import CBCLearning from "../assets/WhatsApp Image 2023-04-01 at 00.47.45.jpeg";
+import CBELearning from "../assets/WhatsApp Image 2023-04-01 at 00.47.45.jpeg";
 
-const carouselImages = [HeroSchool, CBCLearning, HeroSchool];
+const carouselImages = [HeroSchool, CBELearning, HeroSchool];
 
 // Floating Contact Button
 export const FloatingContact = () => {
