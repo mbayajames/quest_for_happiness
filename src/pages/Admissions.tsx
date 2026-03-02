@@ -132,7 +132,7 @@ const Admissions = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative h-[70vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-900 via-black to-blue-950">
+      <section className="relative h-[60vh] md:h-[70vh] min-h-[400px] md:min-h-[600px] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-900 via-black to-blue-950">
         <div className="absolute inset-0 bg-black/40"></div>
         
         {/* Floating Geometric Shapes */}
