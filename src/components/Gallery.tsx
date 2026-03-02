@@ -95,7 +95,7 @@ const Gallery = () => {
               onMouseEnter={() => setHoveredImage(index)}
               onMouseLeave={() => setHoveredImage(null)}
             >
-              <div className="relative h-80 overflow-hidden">
+              <div className="relative h-60 md:h-80 overflow-hidden">
                 <img
                   src={image.src}
                   alt={image.title}
