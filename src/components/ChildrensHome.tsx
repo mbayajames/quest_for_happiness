@@ -249,7 +249,7 @@ const ChildrensHome = () => {
               <img
                 src={childrensHomeImage}
                 alt="Children's Home"
-                className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-110"
+                className="w-full h-[300px] md:h-[500px] object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 text-white flex items-center gap-3">

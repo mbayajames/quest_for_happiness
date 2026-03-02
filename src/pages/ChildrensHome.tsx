@@ -320,7 +320,7 @@ const ChildrensHomePage = () => {
                 <img
                   src={childrensHomeImage}
                   alt="Children's Home"
-                  className="rounded-3xl shadow-2xl w-full h-[600px] object-cover hover:scale-105 transition-transform duration-700 relative z-10 border-8 border-white"
+                  className="rounded-3xl shadow-2xl w-full h-auto md:h-[600px] object-cover hover:scale-105 transition-transform duration-700 relative z-10 border-8 border-white"
                 />
                 <div className="absolute -bottom-4 -left-4 bg-blue-600 text-white px-6 py-3 rounded-2xl font-bold text-lg shadow-xl">
                   120+ Smiling Faces
