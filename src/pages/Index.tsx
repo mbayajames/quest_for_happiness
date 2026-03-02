@@ -11,7 +11,7 @@ import FloatingContact from "@/components/FloatingContact";
 
 function Index() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       <Navigation />
       <Hero />
       <About />
