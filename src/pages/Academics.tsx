@@ -242,7 +242,7 @@ const Academics = () => {
                 <img
                   src={cbcImage}
                   alt="CBE Learning Environment"
-                  className="rounded-2xl shadow-2xl w-full h-[600px] object-cover relative z-10 hover:scale-[1.02] transition-transform duration-500"
+                  className="rounded-2xl shadow-2xl w-full h-auto md:h-[600px] object-cover relative z-10 hover:scale-[1.02] transition-transform duration-500"
                 />
                 <motion.div
                   className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-sm rounded-lg p-4 shadow-lg z-20"
