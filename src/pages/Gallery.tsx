@@ -285,7 +285,7 @@ const GalleryPage = () => {
                 className="overflow-hidden group cursor-pointer hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-200 animate-fade-in gallery-card"
                 onClick={() => setSelectedImage(image)}
               >
-                <div className="relative h-80 overflow-hidden">
+                <div className="relative h-60 md:h-80 overflow-hidden">
                   <img
                     src={image.src}
                     alt={image.title}
