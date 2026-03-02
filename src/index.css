@@ -114,6 +114,7 @@ All colors MUST be HSL.
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    overflow-x: hidden; /* prevent horizontal scroll on all pages */
   }
 
   h1, h2, h3, h4, h5, h6 {
